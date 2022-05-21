@@ -1,4 +1,4 @@
-def cipher_algorithm(offset, character):
+def cypher_algorithm(offset, character):
     asc = ord(character)          # here we convert our character to ASCII
     new_asc = asc + offset
     if new_asc > 122:             # if we exceed our ASCII value range (97-122), we add/subtract 26 to get back in range
@@ -12,7 +12,7 @@ def translate(offset, message):
     string = ""
     for letter in message:                        # We only want to translate alphabetic values
         if letter >= 'a' and letter <= 'z':
-            string += cipher_algorithm(offset, letter)
+            string += cypher_algorithm(offset, letter)
         else:
             string += letter
     return string
