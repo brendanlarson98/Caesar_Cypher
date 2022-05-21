@@ -1,0 +1,34 @@
+def cipher_algorithm(offset, character):
+    asc = ord(character)          # here we convert our character to ASCII
+    new_asc = asc + offset
+    if new_asc > 122:             # if we exceed our ASCII value range (97-122), we add/subtract 26 to get back in range
+        new_asc -= 26             # This creates a circular alphabet, where 'z' + 1 = 'a'
+    elif new_asc < 97:
+        new_asc += 26
+    
+    return chr(new_asc)
+
+def translate(offset, message):
+    string = ""
+    for letter in message:                        # We only want to translate alphabetic values
+        if letter >= 'a' and letter <= 'z':
+            string += cipher_algorithm(offset, letter)
+        else:
+            string += letter
+    return string
+
+def get_offset():
+    valid = False
+    while not valid:
+        offset = int(input("How many letters would you like to offset? "))
+        if (offset != 0 and offset < 26 and offset > -26):
+            valid = True
+    return offset
+
+def en_de_cryption():
+    valid = False
+    while not valid:
+        en_de = input("Would you like to encrypt or decrypt this message? ")
+        if en_de == "encrypt" or en_de == "decrypt" or en_de == "kill":
+            valid = True
+    return en_de
