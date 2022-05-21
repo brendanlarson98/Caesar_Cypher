@@ -1,0 +1,20 @@
+import caesar_cypher_help as caesar
+
+print("\nWelcome to the Caesar Cipher.\nType 'kill' to quit.\n")
+
+is_kill = False
+while not is_kill:
+    en_de = caesar.en_de_cryption()
+    if en_de == 'kill':
+        is_kill = True
+        break
+
+    offset = caesar.get_offset()
+
+    message = input("What is your message? ").lower()
+    if en_de == "decrypt":
+        offset *= -1
+    new_msg = caesar.translate(offset, message)
+
+    print("\nMessage:", new_msg, "\n")
+    
